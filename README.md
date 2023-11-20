@@ -6,6 +6,11 @@
 
 This project provides a URL shortening service, allowing users to convert long URLs into shortened, easy-to-share links. It offers functionalities like URL shortening, user registration, viewing URL history, and redirection.
 
+## Technologies Used
+- Node.js
+- Express.js
+- MongoDB
+
 ## Setup Instructions
 
 ### Prerequisites
@@ -138,8 +143,3 @@ Example Request:
 
 Description:
 - Redirects to the original long URL
-
-## Technologies Used
-- Node.js
-- Express.js
-- MongoDB

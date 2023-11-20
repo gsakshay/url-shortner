@@ -4,9 +4,10 @@
 	"description": "url-shortner demonstrating server side logic and handling databases",
 	"main": "app.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node server.js",
-		"watch": "nodemon server.js"
+		"watch": "nodemon server.js",
+		"test": "jest",
+		"test-watch": "jest --watch"
 	},
 	"author": "Akshay Gunjur Surya Prakash",
 	"license": "ISC",
