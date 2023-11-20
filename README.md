@@ -67,7 +67,7 @@ Description:
 
 Example Request Body:
 
-`````json
+````json
 {
     "username": "test-user",
     "tire": "Tier 1"
@@ -96,16 +96,16 @@ Example Request body:
     "userId":  "655bb5f673e5a2951d5d8445",
     "alias": "o"
 }
-`````
+````
 
 Example Response:
 
-```json
+````json
 {
 	"longUrl": "https://www.youtube.com/watch?v=Nmv2-oSQyWE",
 	"shortUrl": "http://localhost:8000/b"
 }
-```
+````
 
 ### api/user/history/:userId
 
@@ -117,7 +117,7 @@ Example Request:
 
 `api/user/history/:userId`
 
-`````json
+````json
 [
     {
         "_id": "655bb60273e5a2951d5d844b",
@@ -140,4 +140,3 @@ Description:
 - Node.js
 - Express.js
 - MongoDB
-`````
