@@ -134,7 +134,7 @@ Example Request:
 ]
 ````
 
-### Redirect Endpoint `/redirect/:shortUrl`
+### Redirect Endpoint `/:shortUrl`
 
 Description:
 - Redirects to the original long URL
