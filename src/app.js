@@ -1,35 +1,41 @@
 /** @format */
 
+// Importing necessary modules
 const express = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
 
+// Importing defined routes
 const apiRouter = require("./routes")
 const redirectRouter = require("./routes/redirect.routes")
 
+// Creating an Express app
 const app = express()
 
-app.use(cors())
-app.use(morgan("combined"))
-app.use(express.json())
+// Middleware setup
+app.use(cors()) // Handling Cross-Origin Resource Sharing (CORS)
+app.use(morgan("combined")) // Logging HTTP requests
+app.use(express.json()) // Parsing JSON data
 
-app.use("/api", apiRouter)
-app.use("/", redirectRouter)
+// API and redirect routes setup
+app.use("/api", apiRouter) // API routes
+app.use("/", redirectRouter) // Redirect routes
 
-// handle undefined routes
+// Handling undefined routes with a custom error
 app.all("*", (req, res, next) => {
 	next(new customError("404 Route Not Found", 404, "warn"))
 })
 
-// error handler
+// Error handling middleware
 app.use((err, req, res, next) => {
-	// set locals, only providing error in development
+	// Setting locals for error details
 	res.locals.message = err.message
 	res.locals.error = req.app.get("env") === "development" ? err : {}
 
-	// render the error page
+	// Rendering the error page
 	res.status(err.status || 500)
 	res.render("error")
 })
 
+// Exporting the configured Express app
 module.exports = app

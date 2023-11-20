@@ -16,11 +16,23 @@ const {
 	findBusinessCounterAndUpdate,
 } = require("../models/counter/counter.model")
 
+/**
+ * Checks if a given short URL exists in the database.
+ * @param {string} shortURL - The short URL to check.
+ * @returns {Promise<boolean>} True if the URL exists, false otherwise.
+ */
 async function doesURLExist(shortURL) {
 	const url = await getURLByShortUrl(shortURL)
 	return Boolean(url)
 }
 
+/**
+ * Handles the URL shortening process.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ * @param {function} next - The next middleware function.
+ * @returns {Promise<void>} No return value.
+ */
 async function httpShortenUrl(req, res, next) {
 	try {
 		const { longUrl, userId, alias = "" } = req.body
@@ -100,6 +112,13 @@ async function httpShortenUrl(req, res, next) {
 	}
 }
 
+/**
+ * Redirects the short URL to its associated long URL.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ * @param {function} next - The next middleware function.
+ * @returns {Promise<void>} No return value.
+ */
 async function httpRedirectShortURL(req, res, next) {
 	try {
 		const { shortUrl } = req.params

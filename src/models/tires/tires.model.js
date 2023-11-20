@@ -1,7 +1,14 @@
 /** @format */
 
-const Tire = require("./tires.mongo")
+// Importing the Tire model
+const Tire = require("./tires.model")
 
+/**
+ * Create multiple tire entries.
+ * @param {Array<Object>} tireDetailsArray - Array of tire details to create multiple tire entries.
+ * @returns {Promise<Array>} Array of created tire entries.
+ * @throws {Error} If an error occurs while creating multiple tires.
+ */
 async function createMultipleTires(tireDetailsArray) {
 	try {
 		const createdTires = await Tire.insertMany(tireDetailsArray)
@@ -11,6 +18,12 @@ async function createMultipleTires(tireDetailsArray) {
 	}
 }
 
+/**
+ * Retrieve tire entry by its ID.
+ * @param {string} tireId - ID of the tire entry.
+ * @returns {Promise<Object | null>} Retrieved tire entry or null if not found.
+ * @throws {Error} If an error occurs while fetching the tire by ID.
+ */
 async function getTireById(tireId) {
 	try {
 		const tire = await Tire.findById(tireId)
@@ -20,6 +33,12 @@ async function getTireById(tireId) {
 	}
 }
 
+/**
+ * Retrieve tire entry by tire name.
+ * @param {string} tireName - Name of the tire entry.
+ * @returns {Promise<Object | null>} Retrieved tire entry or null if not found.
+ * @throws {Error} If an error occurs while fetching the tire by name.
+ */
 async function getTireByName(tireName) {
 	try {
 		const tire = await Tire.findOne({ tirename: tireName })
@@ -29,7 +48,10 @@ async function getTireByName(tireName) {
 	}
 }
 
-// Business Logic -> Specific
+/**
+ * Create default business-related tire entries (Tiers 1 and 2).
+ * @returns {Promise<Array>} Array of created tire entries.
+ */
 async function createBusinessTires() {
 	const tire1 = {
 		tirename: "Tier 1",

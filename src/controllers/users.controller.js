@@ -4,6 +4,13 @@ const { createUser, getUserById } = require("../models/users/user.model")
 const { getTireByName } = require("../models/tires/tires.model")
 const { getUrlsByUserId } = require("../models/urls/urls.model")
 
+/**
+ * Registers a new user.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ * @param {function} next - The next middleware function.
+ * @returns {Promise<void>} No return value.
+ */
 async function httpRegisterUser(req, res, next) {
 	const user = req.body
 	const { username, tire: tireName } = user
@@ -26,6 +33,13 @@ async function httpRegisterUser(req, res, next) {
 	}
 }
 
+/**
+ * Retrieves URLs associated with a user.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ * @param {function} next - The next middleware function.
+ * @returns {Promise<void>} No return value.
+ */
 async function httpGetUserUrls(req, res, next) {
 	const { userId } = req.params
 

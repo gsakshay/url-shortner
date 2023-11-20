@@ -1,7 +1,14 @@
 /** @format */
 
-const User = require("./user.mongo")
+// Importing the User model
+const User = require("./user.model")
 
+/**
+ * Create a new user.
+ * @param {Object} userData - Data to create a user (username, tire).
+ * @returns {Promise<Object>} Newly created user.
+ * @throws {Error} If an error occurs while creating the user.
+ */
 async function createUser(userData) {
 	try {
 		const newUser = new User(userData)
@@ -12,6 +19,12 @@ async function createUser(userData) {
 	}
 }
 
+/**
+ * Get a user by their ID.
+ * @param {string} userId - ID of the user.
+ * @returns {Promise<Object | null>} Retrieved user object or null if not found.
+ * @throws {Error} If an error occurs while fetching the user.
+ */
 async function getUserById(userId) {
 	try {
 		const user = await User.findById(userId)
@@ -21,9 +34,14 @@ async function getUserById(userId) {
 	}
 }
 
+/**
+ * Increment user's request count by 1.
+ * @param {string} userId - ID of the user.
+ * @returns {Promise<Object>} Updated user object.
+ * @throws {Error} If the user is not found or an error occurs during the update.
+ */
 async function incrementUserRequestsCount(userId) {
 	try {
-		// Find the user based on user ID and update the requests count
 		const updatedUser = await User.findByIdAndUpdate(
 			userId,
 			{ $inc: { requests: 1 } },
