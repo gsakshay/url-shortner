@@ -71,7 +71,8 @@ Example Request Body:
 {
     "username": "test-user",
     "tire": "Tier 1"
-}````
+}
+````
 
 Example Response:
 ````json
@@ -83,7 +84,8 @@ Example Response:
     "createdAt": "2023-11-20T19:39:34.889Z",
     "updatedAt": "2023-11-20T19:39:34.889Z",
     "__v": 0
-}````
+}
+````
 ###  `api/url/shorten`
 Description:
 - Shortens a URL provided by the user
@@ -129,7 +131,8 @@ Example Request:
         "updatedAt": "2023-11-20T19:39:52.079Z",
         "__v": 0
     }
-]````
+]
+````
 
 ### Redirect Endpoint `/redirect/:shortUrl`
 
